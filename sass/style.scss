@@ -1,0 +1,87 @@
+// Variables
+
+$blue: #27b6ea; 
+
+// Mixins
+
+@mixin angle($angle-side, $flip: false, $degree: 2.5deg){
+	// Default angle is a downward sloping 1.5 degree.
+	//$flip : true inverts the angle and changes the transform origin to display properly
+	@if $angle-side == top{
+		&:before{
+			background: inherit;
+			content: '';
+			display: block;
+			height: 50%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			z-index: -1;
+			-webkit-backface-visibility: hidden; // for Chrome Windows
+			top: 0;
+			transform: skewY($degree);
+			transform-origin: 100% 0;
+			@if $flip {
+				transform: skewY($degree * -1);
+				transform-origin: 0 0;
+			} 
+			@else {
+				transform: skewY($degree);
+				transform-origin: 100% 0;
+			}
+		}
+	}
+	@else if $angle-side == bottom{
+		&:after{
+			background: inherit;
+			content: '';
+			display: block;
+			height: 50%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			z-index: -1;
+			-webkit-backface-visibility: hidden; // for Chrome Windows
+			bottom: 0;
+			transform: skewY($degree * -1);
+			transform-origin: 100%;
+			@if $flip {
+				transform: skewY($degree * -1);
+				transform-origin: 0 0;
+			} 
+			@else {
+				transform: skewY($degree);
+				transform-origin: 0 100%;
+			}
+		}
+	}
+
+}
+body{
+	font-family: 'Helvetica', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+section{
+	background: $blue;
+	color: white;
+	padding: 10rem 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+	&.first-section{
+		@include angle(bottom);
+		position: relative;
+		z-index: 2;
+	}
+	&.second-section{
+		background: url(../img/fox.jpg) center;
+		background-size: cover;
+		min-height: 100px;
+	}
+	&.third-section{
+		position: relative;
+		@include angle(top, true);
+	}
+}

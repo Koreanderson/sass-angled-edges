@@ -1,0 +1,54 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+  padding: 0;
+  margin: 0; }
+
+section {
+  background: #27b6ea;
+  color: white;
+  padding: 10rem 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1; }
+  section.first-section {
+    position: relative;
+    z-index: 2; }
+    section.first-section:after {
+      background: inherit;
+      content: '';
+      display: block;
+      height: 50%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+      -webkit-backface-visibility: hidden;
+      bottom: 0;
+      transform: skewY(-2.5deg);
+      transform-origin: 100%;
+      transform: skewY(2.5deg);
+      transform-origin: 0 100%; }
+  section.second-section {
+    background: url(../img/fox.jpg) center;
+    background-size: cover;
+    min-height: 100px; }
+  section.third-section {
+    position: relative; }
+    section.third-section:before {
+      background: inherit;
+      content: '';
+      display: block;
+      height: 50%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+      -webkit-backface-visibility: hidden;
+      top: 0;
+      transform: skewY(2.5deg);
+      transform-origin: 100% 0;
+      transform: skewY(-2.5deg);
+      transform-origin: 0 0; }
+
+/*# sourceMappingURL=style.css.map */
